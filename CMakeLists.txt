@@ -31,6 +31,8 @@ add_executable(${PROJECT_NAME}
         ATIVIDADE-06.c # Código principal em C
         libs/src/joystick_task.c # Código da task do joystick
         libs/src/ledsrgb_task.c # Código da task dos leds rgb
+        libs/src/display_task.c # Código da task do display
+        libs/src/ssd1306.c # Código da biblioteca do display
         )
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR})  # Adiciona o diretório raiz como include privado apenas para o target atual
@@ -41,6 +43,7 @@ target_link_libraries(${PROJECT_NAME}
         FreeRTOS-Kernel-Heap4
         hardware_adc
         hardware_pwm
+        hardware_i2c
         )
 
 pico_enable_stdio_usb(${PROJECT_NAME} 1)

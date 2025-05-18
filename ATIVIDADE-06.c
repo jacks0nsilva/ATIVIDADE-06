@@ -6,43 +6,9 @@
 #include "libs/include/definicoes.h"
 #include "libs/include/joystick_task.h"
 #include "libs/include/ledsrgb_task.h"
+#include "libs/include/display_task.h"
 
 QueueHandle_t xJoystickQueue;
-
-/*
-void vJoystickTask(void *params)
-{
-    JoystickData joystickData;
-    adc_gpio_init(VRX_PIN);
-    adc_gpio_init(VRY_PIN);
-    adc_init();
-
-    while (true)
-    {
-        adc_select_input(0); // GPIO 26 - ADC 0
-        joystickData.y_value = adc_read();
-
-        adc_select_input(1); // GPIO 27 - ADC 1
-        joystickData.x_value = adc_read();
-
-        xQueueSend(xJoystickQueue, &joystickData, 0);
-        vTaskDelay(pdMS_TO_TICKS(100)); // Delay de 100ms
-    }
-}
-
-void vReadingTask(void *params)
-{
-   JoystickData joydata;
-   while (true)
-   {
-       if (xQueueReceive(xJoystickQueue, &joydata, portMAX_DELAY) == pdTRUE)
-       {
-           printf("X: %d, Y: %d\n", joydata.x_value, joydata.y_value);
-       }
-       vTaskDelay(pdMS_TO_TICKS(100)); // Atualiza a cada 100ms
-   }
-}
-*/
 
 
 // Modo BOOTSEL com botão B
@@ -68,6 +34,7 @@ int main()
 
     xTaskCreate(vJoystickTask, "Joystick Task", 256, NULL,1, NULL);
     xTaskCreate(vLedsRGBTask, "LEDsRGB Task", 256, NULL, 1, NULL);
+    xTaskCreate(vDisplayTask, "Display Task", 256, NULL, 1, NULL);
     vTaskStartScheduler();
     panic_unsupported();
 }

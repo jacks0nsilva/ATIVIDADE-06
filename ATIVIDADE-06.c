@@ -31,7 +31,7 @@ int main()
     gpio_set_irq_enabled_with_callback(BUTTON_B, GPIO_IRQ_EDGE_FALL, true, &gpio_irq_handler);
 
     stdio_init_all();
-    sleep_ms(2000); // Aguarda 2 segundos para inicializar o USB
+    sleep_ms(1000); // Aguarda 1 segundo para inicializar o USB
     xJoystickQueue = xQueueCreate(10, sizeof(JoystickData));
 
     xTaskCreate(vJoystickTask, "Joystick Task", 256, NULL,1, NULL);

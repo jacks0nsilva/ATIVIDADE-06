@@ -14,7 +14,7 @@
 #define I2C_SCL 15 // Pino SCL
 #define ADRESS 0x3c // Endereço do display
 #define BUZZER_A 21 // Pino do Buzzer
-#define MATRIZ_LEDS 7
+#define MATRIZ_LEDS 7 // Pino da Matriz de LEDs
 
 
 typedef struct {
@@ -22,6 +22,6 @@ typedef struct {
     int16_t y_value; // Eixo Y do Joystick (nível de volume da chuva)
 } JoystickData;
 
-extern QueueHandle_t xJoystickQueue;
+extern QueueHandle_t xJoystickQueue; //  Fila para comunicação entre tarefas
 
 #endif

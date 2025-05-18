@@ -10,6 +10,7 @@
 #include "libs/include/buzzer_task.h"
 #include "libs/include/matriz_task.h"
 
+// Fila para comunicação entre tarefas
 QueueHandle_t xJoystickQueue;
 
 

@@ -34,6 +34,7 @@ add_executable(${PROJECT_NAME}
         libs/src/display_task.c # Código da task do display
         libs/src/ssd1306.c # Código da biblioteca do display
         libs/src/buzzer_task.c # Código da task do buzzer
+        libs/src/matriz_task.c # Código da matriz de leds
         )
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR})  # Adiciona o diretório raiz como include privado apenas para o target atual
@@ -45,9 +46,12 @@ target_link_libraries(${PROJECT_NAME}
         hardware_adc
         hardware_pwm
         hardware_i2c
+        hardware_pio
+        hardware_clocks
         )
 
 pico_enable_stdio_usb(${PROJECT_NAME} 1)
 pico_enable_stdio_uart(${PROJECT_NAME} 1)
 
+pico_generate_pio_header(ATIVIDADE-06 ${CMAKE_CURRENT_LIST_DIR}/ws2818b.pio)
 pico_add_extra_outputs(${PROJECT_NAME})

@@ -8,6 +8,7 @@
 #include "libs/include/ledsrgb_task.h"
 #include "libs/include/display_task.h"
 #include "libs/include/buzzer_task.h"
+#include "libs/include/matriz_task.h"
 
 QueueHandle_t xJoystickQueue;
 
@@ -37,6 +38,7 @@ int main()
     xTaskCreate(vLedsRGBTask, "LEDsRGB Task", 256, NULL, 1, NULL);
     xTaskCreate(vDisplayTask, "Display Task", 256, NULL, 1, NULL);
     xTaskCreate(vBuzzerTask, "Buzzer Task", 256, NULL, 1, NULL);
+    xTaskCreate(vMatrizTask, "Matriz Task", 512, NULL, 1, NULL);
     vTaskStartScheduler();
     panic_unsupported();
 }

@@ -29,7 +29,8 @@ include_directories(${CMAKE_SOURCE_DIR}/libs) # Adiciona o diretório 'libs' à 
 
 add_executable(${PROJECT_NAME}  
         ATIVIDADE-06.c # Código principal em C
-        libs/joystick_task.c
+        libs/joystick_task.c # Código da task do joystick
+        libs/ledsrgb_task.c # Código da task dos leds rgb
         )
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR})  # Adiciona o diretório raiz como include privado apenas para o target atual

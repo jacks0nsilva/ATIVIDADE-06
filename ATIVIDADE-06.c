@@ -3,9 +3,9 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
-#include "hardware/pwm.h"
 #include "libs/definicoes.h"
 #include "libs/joystick_task.h"
+#include "libs/ledsrgb_task.h"
 
 QueueHandle_t xJoystickQueue;
 
@@ -29,7 +29,7 @@ void vJoystickTask(void *params)
         vTaskDelay(pdMS_TO_TICKS(100)); // Delay de 100ms
     }
 }
-*/
+
 void vReadingTask(void *params)
 {
    JoystickData joydata;
@@ -42,6 +42,8 @@ void vReadingTask(void *params)
        vTaskDelay(pdMS_TO_TICKS(100)); // Atualiza a cada 100ms
    }
 }
+*/
+
 
 // Modo BOOTSEL com botão B
 #include "pico/bootrom.h"
@@ -65,7 +67,7 @@ int main()
     xJoystickQueue = xQueueCreate(10, sizeof(JoystickData));
 
     xTaskCreate(vJoystickTask, "Joystick Task", 256, NULL,1, NULL);
-    xTaskCreate(vReadingTask, "Reading Task", 256, NULL, 1, NULL);
+    xTaskCreate(vLedsRGBTask, "LEDsRGB Task", 256, NULL, 1, NULL);
     vTaskStartScheduler();
     panic_unsupported();
 }

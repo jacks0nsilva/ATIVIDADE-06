@@ -4,6 +4,7 @@
 #include "libs/include/definicoes.h"
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 void vDisplayTask(void *params)
 {
@@ -33,8 +34,8 @@ void vDisplayTask(void *params)
     {
         if(xQueueReceive(xJoystickQueue, &joystickData, portMAX_DELAY)== pdTRUE)
         {
-            volume_agua = (joystickData.x_value * 100) / 4095; // Normaliza para 0-100
-            volume_chuva = (joystickData.y_value * 100) / 4095; // Normaliza para 0-100
+            volume_chuva = (abs(joystickData.y_value - 2048) * 100) / 2048; // Normaliza para 0-100
+            volume_agua = (abs(joystickData.x_value - 2048) * 100) / 2048; // Normaliza para 0-100
 
             ssd1306_fill(&ssd, false);
             ssd1306_rect(&ssd,0,0, WIDTH, HEIGHT, true, false); // Desenha o contorno do display

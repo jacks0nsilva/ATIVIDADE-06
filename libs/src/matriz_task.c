@@ -1,7 +1,7 @@
 #include "libs/include/definicoes.h"
 #include "libs/include/matriz_task.h"
 #include "libs/include/pio_config.h"
-
+#include <stdlib.h>
 
 void vrx_leds(uint16_t vrx_value)
 {
@@ -84,8 +84,8 @@ void vMatrizTask(void *params){
 
     while (true){
         if(xQueueReceive(xJoystickQueue, &joystickData, portMAX_DELAY) == pdTRUE){
-            volume_agua = (joystickData.x_value * 100) / 4095; // Normaliza para 0-100
-            volume_chuva = (joystickData.y_value * 100) / 4095; // Normaliza para 0-100
+            volume_chuva = (abs(joystickData.y_value - 2048) * 100) / 2048; // Normaliza para 0-100
+            volume_agua = (abs(joystickData.x_value - 2048) * 100) / 2048; // Normaliza para 0-100
             vrx_leds(volume_agua);
             vry_leds(volume_chuva);
             vTaskDelay(pdMS_TO_TICKS(50)); 

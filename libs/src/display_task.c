@@ -5,7 +5,7 @@
 #include <string.h>
 #include <stdio.h>
 
-void vDisplayTask(void *pvParameters)
+void vDisplayTask(void *params)
 {
     JoystickData joystickData;
     ssd1306_t ssd;

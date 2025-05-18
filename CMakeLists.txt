@@ -33,6 +33,7 @@ add_executable(${PROJECT_NAME}
         libs/src/ledsrgb_task.c # Código da task dos leds rgb
         libs/src/display_task.c # Código da task do display
         libs/src/ssd1306.c # Código da biblioteca do display
+        libs/src/buzzer_task.c # Código da task do buzzer
         )
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR})  # Adiciona o diretório raiz como include privado apenas para o target atual

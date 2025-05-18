@@ -13,6 +13,7 @@
 #define I2C_SDA 14 // Pino SDA
 #define I2C_SCL 15 // Pino SCL
 #define ADRESS 0x3c // Endereço do display
+#define BUZZER_A 21 // Pino do Buzzer
 
 
 

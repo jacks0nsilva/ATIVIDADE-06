@@ -35,10 +35,10 @@ int main()
     xJoystickQueue = xQueueCreate(10, sizeof(JoystickData));
 
     xTaskCreate(vJoystickTask, "Joystick Task", 256, NULL,1, NULL);
-    xTaskCreate(vLedsRGBTask, "LEDsRGB Task", 256, NULL, 1, NULL);
-    xTaskCreate(vDisplayTask, "Display Task", 256, NULL, 1, NULL);
-    xTaskCreate(vBuzzerTask, "Buzzer Task", 256, NULL, 1, NULL);
-    xTaskCreate(vMatrizTask, "Matriz Task", 512, NULL, 1, NULL);
+    xTaskCreate(vLedsRGBTask, "LEDsRGB Task", 256, NULL, 2, NULL);
+    xTaskCreate(vDisplayTask, "Display Task", 256, NULL, 2, NULL);
+    xTaskCreate(vBuzzerTask, "Buzzer Task", 256, NULL, 2, NULL);
+    xTaskCreate(vMatrizTask, "Matriz Task", 512, NULL, 2, NULL);
     vTaskStartScheduler();
     panic_unsupported();
 }

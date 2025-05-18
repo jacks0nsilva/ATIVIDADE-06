@@ -88,9 +88,20 @@ void vMatrizTask(void *params){
             volume_agua = (abs(joystickData.x_value - 2048) * 100) / 2048; // Normaliza para 0-100
             vrx_leds(volume_agua);
             vry_leds(volume_chuva);
-            vTaskDelay(pdMS_TO_TICKS(50)); 
+
             npWrite(); // Envia os dados para a matriz de LEDs  
-            
+            vTaskDelay(pdMS_TO_TICKS(100)); 
+
+            if(volume_agua >= 70 || volume_chuva >= 80)
+            {
+                int active_leds[9]= {6,7,8,11,12,13,16,17,18};
+                npSetManyLEDs(active_leds, 9, 101, 0, 0); // Vermelho
+                npWrite(); // Envia os dados para a matriz de LEDs
+                vTaskDelay(pdMS_TO_TICKS(200));
+                npSetManyLEDs(active_leds, 9, 0, 0, 0); // Apaga os LEDs
+                npWrite(); // Envia os dados para a matriz de LEDs
+                vTaskDelay(pdMS_TO_TICKS(200));
+            }
         }
     }
 

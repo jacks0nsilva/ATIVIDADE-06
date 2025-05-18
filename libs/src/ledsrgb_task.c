@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "ledsrgb_task.h"
-#include "definicoes.h"
+#include "libs/include/ledsrgb_task.h"
+#include "libs/include/definicoes.h"
 #include "pico/stdlib.h"
 
 void vLedsRGBTask(void *params){

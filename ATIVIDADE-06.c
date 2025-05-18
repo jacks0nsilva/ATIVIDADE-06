@@ -3,9 +3,9 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
-#include "libs/definicoes.h"
-#include "libs/joystick_task.h"
-#include "libs/ledsrgb_task.h"
+#include "libs/include/definicoes.h"
+#include "libs/include/joystick_task.h"
+#include "libs/include/ledsrgb_task.h"
 
 QueueHandle_t xJoystickQueue;
 

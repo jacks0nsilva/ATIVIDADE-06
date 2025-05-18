@@ -1,5 +1,5 @@
-#include "joystick_task.h"
-#include "definicoes.h"
+#include "libs/include/joystick_task.h"
+#include "libs/include/definicoes.h"
 #include "hardware/adc.h"
 #include "pico/stdlib.h"
 
